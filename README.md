@@ -26,3 +26,12 @@
 | Task | File |
 | ---- | ---- |
 
+Recommended Task Order
+. Task 1 - 0 . 1 
+. Task 6 - 0 . 1 . 1
+. Task 2 - 0 . 2
+. Task 7 - 0 . 2 . 1
+. Task 3 - 0 . 3
+. Task 4 - 0 . 4
+. Task 8 - 0 . 4 . 1
+. Task 5 - 1 . 0
