@@ -17,4 +17,6 @@ ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
 
 extern char **environ;
 
+#define STDIN_BUFFSIZE 1024;
+
 #endif
