@@ -11,8 +11,12 @@
 /*function protypes*/
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
-void exec(char **argv, char **env);
+void exec(char **argv);
 
 ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
+
+extern char **environ;
+
+#define STDIN_BUFFSIZE 1024;
 
 #endif

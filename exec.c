@@ -6,7 +6,7 @@
  *
  * Return: nothing
 */
-void exec(char **argv, char **env)
+void exec(char **argv)
 {
 	pid_t child;
 	int status;
@@ -14,7 +14,7 @@ void exec(char **argv, char **env)
 	child = fork();
 	if (child == 0)
 	{
-		execve(argv[0], argv, env);
+		execve(argv[0], argv, NULL);
 	}
 	else
 	{
