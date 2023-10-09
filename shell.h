@@ -19,4 +19,8 @@ extern char **environ;
 
 #define STDIN_BUFFSIZE 1024;
 
+char *my_getenv(const char *desiredkey, const char *appendValue);
+
+char *env(void);
+
 #endif
