@@ -1,10 +1,10 @@
 #include "shell.h"
 
-char *env(void)
+/*char *env(void)
 {
     char *key = "PATH";
     char *path = my_getenv(key, "PATH=");
-    /*char **path_directories = NULL;
+    char **path_directories = NULL;
     char *dir;
     int i = 0;
 
@@ -31,9 +31,10 @@ char *env(void)
         dir = strtok(NULL, ":");
 		i++;
     }
-    path_directories[i] = NULL;*/
+    path_directories[i] = NULL;
     return (path);
 }
+*/
 
 /*int main(void)
 {
