@@ -36,7 +36,7 @@ int senv() {
 }
 */
 
-/*char *my_getenv(const char *desiredkey) {
+char *my_getenv(const char *desiredkey) {
     char **env = environ;
     size_t desiredKeyLength = strlen(desiredkey);
     char *value = NULL;
@@ -58,8 +58,9 @@ int senv() {
         return NULL;
     }
 }
-*/
-char *my_getenv(const char *desiredkey, const char *appendValue) {
+
+
+/*char *my_getenv(const char *desiredkey, const char *appendValue) {
     char **env = environ;
     size_t desiredKeyLength = strlen(desiredkey);
     size_t new_value_length;
@@ -90,4 +91,5 @@ char *my_getenv(const char *desiredkey, const char *appendValue) {
         return (NULL);
     }
 }
+*/
 
