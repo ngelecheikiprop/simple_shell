@@ -1,5 +1,5 @@
 #include "shell.h"
-char *file_info(char **args)
+char *file_exists(char **args)
 {
     char *env_var_name = "PATH";
     char *path = my_getenv(env_var_name);
@@ -16,6 +16,12 @@ char *file_info(char **args)
         fprintf(stderr, "PATH environment variable not found.\n");
         return (NULL);
     }
+
+    if (access(args[0], F_OK) == 0)
+    {
+        return (args[0]);
+    }
+
     token = strtok(path, ":");
     while (token != NULL)
     {
@@ -34,7 +40,7 @@ char *file_info(char **args)
 
 /*int main(void)
 {
-  char *args[10] = {"/bin/ls"};
+  char *args[10] = {"ls"};
   char *file_stat = file_info(args);
   if (file_stat != NULL) {
       printf("%s", file_stat);
