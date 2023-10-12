@@ -23,6 +23,6 @@ char *my_getenv(const char *desiredkey);
 
 char *env(void);
 
-char *file_info(char **args);
+char *file_exists(char **args);
 
 #endif
