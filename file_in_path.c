@@ -34,6 +34,7 @@ char *file_exists(char **args)
     }
 
     free(full_path);
+    fprintf(stderr, ":%s: not found\n", args[0]);
     return (NULL);
 }
 
