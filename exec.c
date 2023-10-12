@@ -10,15 +10,20 @@ void exec(char **argv)
 {
 	pid_t child;
 	int status;
+	char *file_stat = file_exists(argv);
+	char **envp = environ;
 
-	child = fork();
-	if (child == 0)
+	if (file_stat != NULL)
 	{
-		execve(argv[0], argv, NULL);
-	}
-	else
-	{
-		waitpid(child, &status, 0);
+		child = fork();
+		if (child == 0)
+		{
+			execve(file_stat, argv, envp);
+		}
+		else
+		{
+			waitpid(child, &status, 0);
+		}
 		free(argv);
 	}
 }
