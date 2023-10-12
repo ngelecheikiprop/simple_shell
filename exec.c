@@ -10,7 +10,7 @@ void exec(char **argv)
 {
 	pid_t child;
 	int status;
-	char *file_stat = file_info(argv);
+	char *file_stat = file_exists(argv);
 	char **envp = environ;
 
 	if (file_stat != NULL)
@@ -23,7 +23,7 @@ void exec(char **argv)
 		else
 		{
 			waitpid(child, &status, 0);
-			free(argv);
 		}
+		free(argv);
 	}
 }
