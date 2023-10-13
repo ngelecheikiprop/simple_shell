@@ -6,24 +6,19 @@
  *
  * Return: nothing
 */
-void exec(char **argv)
+void exec(char **argv, char **env)
 {
 	pid_t child;
 	int status;
-	char *file_stat = file_exists(argv);
-	char **envp = environ;
 
-	if (file_stat != NULL)
+	child = fork();
+	if (child == 0)
 	{
-		child = fork();
-		if (child == 0)
-		{
-			execve(file_stat, argv, envp);
-		}
-		else
-		{
-			waitpid(child, &status, 0);
-		}
+		execve(argv[0], argv, env);
+	}
+	else
+	{
+		waitpid(child, &status, 0);
 		free(argv);
 	}
 }

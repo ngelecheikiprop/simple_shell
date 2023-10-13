@@ -7,33 +7,50 @@
  *
  * Return: nothing
 */
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
 	size_t count;
 	char *buffer = NULL;
-	char **argv;
+	char **argv = NULL;
 	char *delim = " ";
 	char *prompt = "$";
+	char *dir = NULL;
+	dir_node *head;
 
+	head = NULL;
 	(void)ac;
 	(void)av;
+	head = _path_list(env);
 	while (1)
 	{
+		dir = NULL;
 		buffer = NULL;
+		count = 0;
+		argv = NULL;
 		count = 0;
 		if (isatty(fileno(stdin)))
 		{
-		write(STDOUT_FILENO, prompt, 1);
-		fflush(stdout);
+			write(STDOUT_FILENO, prompt, 1);
+			fflush(stdout);
 		}
-		if (read_from_stream(&buffer, &count, stdin) == EOF)
+		if (getline(&buffer, &count, stdin) == EOF)
 		{
 			free(buffer);
 			exit(100);
 		}
 		strtok(buffer, "\n");
 		argv = list_of_words(buffer, delim);
-		exec(argv);
+		dir = _getdir(head, argv[0]);
+		if (dir != NULL)
+		{
+			argv[0] = dir;
+		}
+		else
+		{
+			perror("command not found\n");
+			continue;
+		}
+		exec(argv, env);
 		free(buffer);
 	}
 	return (0);
