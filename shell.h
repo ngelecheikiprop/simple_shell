@@ -25,4 +25,20 @@ char *env(void);
 
 char *file_exists(char **args);
 
+/**
+ * struct BuiltinCommand - groups functions and their program names
+ * @name: name of program
+ * @function: corresponding function
+*/
+typedef struct BuiltinCommand
+{
+    char *name;
+    int (*function)(char **);
+} BuiltinCommand;
+
+int hsh_exit(char **args);
+int hsh_cd(char **args);
+int hsh_env();
+
+int builtin_comp(char **args);
 #endif
