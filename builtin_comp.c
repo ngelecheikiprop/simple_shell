@@ -24,5 +24,5 @@ int builtin_comp(char **args)
         }
     }
 
-    return (1);
+    return (0);
 }
