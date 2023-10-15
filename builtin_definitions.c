@@ -7,8 +7,12 @@
 */
 int hsh_exit(char **args)
 {
-  (void)args;
-  return (0);
+  int status_code = 0;
+  if (args[1] != NULL)
+  {
+    status_code = atoi(args[1]);
+  }
+  exit(status_code);
 }
 
 /**
@@ -44,8 +48,26 @@ int hsh_cd(char **args)
   return (0);
 }
 
+/*int hsh_setenv(char **args)
+{
+  if (*args == NULL || args < 3)
+  {
+    fprintf(stderr, "setenv KEY VALUE\n");
+  }
 
-/*int hsh_env() {
+}
+
+
+int hsh_unsetenv(char **args)
+{
+  if (*args == NULL || args < 2)
+  {
+    fprintf(stderr, "unsetenv KEY\n");
+  }
+}
+
+
+int hsh_env() {
     char **env = environ;
 
     while (*env != NULL) {
