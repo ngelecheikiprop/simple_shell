@@ -33,8 +33,14 @@ int main(int ac, char **av)
 		}
 		strtok(buffer, "\n");
 		argv = list_of_words(buffer, delim);
-		exec(argv);
-		free(buffer);
+		if (builtin_comp(argv) == 0)
+		{
+			exec_external(argv);
+		}
+		else
+		{
+			exec_builtin(argv);
+		}
 	}
 	return (0);
 }
