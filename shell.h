@@ -11,8 +11,9 @@
 /*function protypes*/
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
-void exec(char **argv);
+int exec_external(char **argv);
 
+void exec_builtin(char **argv);
 ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
 
 extern char **environ;
