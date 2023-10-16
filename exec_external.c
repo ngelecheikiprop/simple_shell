@@ -26,14 +26,6 @@ int exec_external(char **argv)
 	    free(argv);
 	  }
 	}
-	else if (argv != NULL)
-	{
-		fprintf(stderr, "%s: not found\n", argv[0]);
-	}
-	else
-	{
-		exit(EXIT_FAILURE);
-	}
 	return (0);
 }
 
