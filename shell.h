@@ -37,9 +37,19 @@ typedef struct BuiltinCommand
     int (*function)(char **);
 } BuiltinCommand;
 
+typedef struct env_list
+{
+	char *envar;
+	struct env_list *next_node;
+} env_list;
+
 int hsh_exit(char **args);
 int hsh_cd(char **args);
 int hsh_env();
+int hsh_setenv(char **args);
 
 int builtin_comp(char **args);
+
+env_list *create_list(char **env);
+env_list *add_node(env_list **head, char *str);
 #endif
