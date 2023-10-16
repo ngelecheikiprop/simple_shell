@@ -48,17 +48,46 @@ int hsh_cd(char **args)
   return (0);
 }
 
-/*int hsh_setenv(char **args)
+int hsh_setenv(char **args)
 {
-  if (*args == NULL || args < 3)
+  int i = 0;
+  char **env = environ;
+  char *node_envar_dup, *envar, *key, *key_concat;
+  char *value = NULL;
+  env_list *node = create_list(env);
+
+  while (*args != NULL)
   {
-    fprintf(stderr, "setenv KEY VALUE\n");
+    args++;
+    i++;
   }
 
+  if (*args == NULL || i < 3)
+  {
+    fprintf(stderr, "setenv KEY VALUE\n");
+    
+  }
+
+  while (node != NULL)
+  {
+    node_envar_dup = strdup(node->envar);
+    key = strtok(node_envar_dup, "=");
+    if (key == args[1])
+    {
+      value = strtok(NULL, "=");
+      value = args[2];
+    }
+    node = node->next_node;
+  }
+  key_concat = strcat(args[1], "=");
+  envar = strcat(key_concat, value);
+  add_node(&node, envar);
+  printf("it works\n");
+  return (0);
 }
 
 
-int hsh_unsetenv(char **args)
+/*int hsh_unsetenv(char **args)
 {
   if (*args == NULL || args < 2)
   {
