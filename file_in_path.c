@@ -40,7 +40,7 @@ char *file_exists(char **args)
 /*int main(void)
 {
   char *args[10] = {"ls"};
-  char *file_stat = file_info(args);
+  char *file_stat = file_exists(args);
   if (file_stat != NULL) {
       printf("%s", file_stat);
   } else {
