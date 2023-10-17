@@ -28,13 +28,11 @@ int hsh_cd(char **args)
   {
     dir = my_getenv(key);
     chdir(dir);
-    printf("it worked\n");
   }
   else 
   {
     dir = args[1];
     chdir(dir);
-    printf("it worked again\n");
   }
   if (getcwd(cwd, sizeof(cwd)) == NULL)
   {
