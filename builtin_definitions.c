@@ -46,7 +46,7 @@ int hsh_cd(char **args)
   return (0);
 }
 
-int hsh_setenv(char **args)
+/*int hsh_setenv(char **args)
 {
   int i = 0;
   char **env = environ;
@@ -89,7 +89,7 @@ int hsh_setenv(char **args)
   printf("it works\n");
   free_list(node);
   return (0);
-}
+}*/
 
 
 /*int hsh_unsetenv(char **args)

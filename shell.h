@@ -46,7 +46,7 @@ typedef struct env_list
 int hsh_exit(char **args);
 int hsh_cd(char **args);
 int hsh_env();
-int hsh_setenv(char **args);
+/*int hsh_setenv(char **args);*/
 
 int builtin_comp(char **args);
 int (*_getfunc(char *command))(char **args);
