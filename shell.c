@@ -47,7 +47,7 @@ int main(int ac, char **av)
 		}
 		else
 		{
-			fprintf(stderr, "%s: No such file or directory\n", av[0]);
+			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
 		}
 	}
 	return (0);
