@@ -33,14 +33,21 @@ int main(int ac, char **av)
 		}
 		strtok(buffer, "\n");
 		argv = list_of_words(buffer, delim);
-		exec_external(argv);
-		if (builtin_comp(argv) == 0)
+		if (argv == NULL)
+		{
+			continue;
+		}
+		if (_getfunc(argv[0]))
+		{
+			exec_builtin(argv);
+		}
+		else if (file_exists(argv))
 		{
 			exec_external(argv);
 		}
 		else
 		{
-			exec_builtin(argv);
+			fprintf(stderr, "%s: No such file or directory\n", av[0]);
 		}
 	}
 	return (0);
