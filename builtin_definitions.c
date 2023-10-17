@@ -56,6 +56,12 @@ int hsh_setenv(char **args)
   char *value = NULL;
   env_list *node = create_list(env);
 
+  if (node == NULL)
+  {
+    fprintf(stderr, "Failed to create list\n");
+    return (1);
+  }
+
   while (*args != NULL)
   {
     args++;
@@ -65,7 +71,7 @@ int hsh_setenv(char **args)
   if (*args == NULL || i < 3)
   {
     fprintf(stderr, "setenv KEY VALUE\n");
-    
+    return -1;
   }
 
   while (node != NULL)
@@ -81,8 +87,9 @@ int hsh_setenv(char **args)
   }
   key_concat = strcat(args[1], "=");
   envar = strcat(key_concat, value);
-  add_node(&node, envar);
+  add_node_end(&node, envar);
   printf("it works\n");
+  free_list(node);
   return (0);
 }
 
