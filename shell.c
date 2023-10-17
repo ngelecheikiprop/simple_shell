@@ -33,14 +33,19 @@ int main(int ac, char **av)
 		}
 		strtok(buffer, "\n");
 		argv = list_of_words(buffer, delim);
-		if (_getfunc(argv[0]) != NULL)
+		if (_getfunc(argv[0]))
 		{
-			exec_builtin(argv[0]);
+			exec_builtin(argv);
 		}
-		else
+		else if (file_exists(argv))
 		{
 			exec_external(argv);
 		}
+		else
+		{
+			perror("command not found --------");
+		}
+
 	}
 	return (0);
 }

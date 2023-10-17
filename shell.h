@@ -12,7 +12,7 @@
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
 int exec_external(char **argv);
-void exec_builtin(char *command);
+void exec_builtin(char **argv);
 
 ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
 
@@ -33,9 +33,9 @@ char *file_exists(char **args);
 */
 typedef struct BuiltinCommand
 {
-    char *name;
-    int (*function)(char **);
-} BuiltinCommand;
+	char *name;
+	int (*function)(char **argv);
+	} BuiltinCommand;
 
 typedef struct env_list
 {
@@ -49,5 +49,5 @@ int hsh_setenv(char **args);
 
 env_list *create_list(char **env);
 env_list *add_node(env_list **head, char *str);
-int (*_getfunc(char *command))(char **args);
+int (*_getfunc(char *command))(char **argv);
 #endif

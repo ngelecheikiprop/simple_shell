@@ -6,14 +6,14 @@
  *
  *Return: nothing
 */
-void exec_builtin(char *command)
+void exec_builtin(char **argv)
 {
-	int (*fun)(char *command);
+	int (*fun)(char **argv);
 
-	fun = _getfunc(command);
+	fun = _getfunc(argv[0]);
 	if (fun != NULL)
 	{
-		fun(command);
+		fun(argv);
 		return;
 	}
 }
