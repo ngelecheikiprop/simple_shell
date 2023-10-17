@@ -1,18 +1,3 @@
-/*#include <stdio.h>
-
-extern char **environ;
-
-int senv() {
-    char **env = environ;
-
-    while (*env != NULL) {
-        printf("%s\n", *env);
-        env++;
-    }
-
-    return 0;
-}
-*/
 #include "shell.h"
 
 
@@ -50,17 +35,18 @@ char *my_getenv(const char *desiredkey) {
         env++;
     }
 
-    if (value != NULL) {
+    if (value != NULL)
+    {
         char *copy = malloc(strlen(value) + 1);
         strcpy(copy, value);
         return copy;
-    } else {
-        return NULL;
     }
+
+    return (NULL);
 }
 
 
-/*char *my_getenv(const char *desiredkey, const char *appendValue) {
+/*char *_getenvars(const char *desiredkey, const char *appendValue) {
     char **env = environ;
     size_t desiredKeyLength = strlen(desiredkey);
     size_t new_value_length;

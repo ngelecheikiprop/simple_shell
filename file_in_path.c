@@ -32,9 +32,7 @@ char *file_exists(char **args)
         }
         token = strtok(NULL, ":");
     }
-
     free(full_path);
-    fprintf(stderr, ":%s: not found\n", args[0]);
     return (NULL);
 }
 
@@ -42,7 +40,7 @@ char *file_exists(char **args)
 /*int main(void)
 {
   char *args[10] = {"ls"};
-  char *file_stat = file_info(args);
+  char *file_stat = file_exists(args);
   if (file_stat != NULL) {
       printf("%s", file_stat);
   } else {
