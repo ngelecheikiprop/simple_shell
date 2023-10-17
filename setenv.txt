@@ -1,0 +1,22 @@
+setenv VARIABLE VALUE
+/**key=value*****key'\0'valu
+if (argv[0] == setenv)
+	{
+	var = argv[1]
+	while
+		{
+			the next node
+			--make local copy the key value pair
+			tokenize with equal sign
+			compare first token with var
+			if (equal)
+			{
+				taken secend token
+				overwrite
+				return(0);
+			}
+		}
+		move through the list
+		tokenize with equal
+		check if var == token
+	}

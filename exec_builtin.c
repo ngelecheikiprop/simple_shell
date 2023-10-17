@@ -1,10 +1,19 @@
 #include "shell.h"
-
-void exec_builtin(char **argv)
+/**
+ * exec_builtin - executes a builtin command
+ * @argv: list of string arguments
+ * @command: the command to exec
+ *
+ *Return: nothing
+*/
+void exec_builtin(char *command)
 {
-	int builtin_result = builtin_comp(argv);
-	if (builtin_result == 0) 
+	int (*fun)(char *command);
+
+	fun = _getfunc(command);
+	if (fun != NULL)
 	{
-		fprintf(stderr, "%s: not found builtin\n", argv[0]);
+		fun(command);
+		return;
 	}
 }

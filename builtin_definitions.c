@@ -30,7 +30,7 @@ int hsh_cd(char **args)
     chdir(dir);
     printf("it worked\n");
   }
-  else 
+  else
   {
     dir = args[1];
     chdir(dir);
@@ -65,7 +65,7 @@ int hsh_setenv(char **args)
   if (*args == NULL || i < 3)
   {
     fprintf(stderr, "setenv KEY VALUE\n");
-    
+
   }
 
   while (node != NULL)
@@ -85,24 +85,3 @@ int hsh_setenv(char **args)
   printf("it works\n");
   return (0);
 }
-
-
-/*int hsh_unsetenv(char **args)
-{
-  if (*args == NULL || args < 2)
-  {
-    fprintf(stderr, "unsetenv KEY\n");
-  }
-}
-
-
-int hsh_env() {
-    char **env = environ;
-
-    while (*env != NULL) {
-        printf("%s\n", *env);
-        env++;
-    }
-
-    return 0;
-}*/
