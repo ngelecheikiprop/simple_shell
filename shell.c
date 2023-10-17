@@ -33,6 +33,10 @@ int main(int ac, char **av)
 		}
 		strtok(buffer, "\n");
 		argv = list_of_words(buffer, delim);
+		if (argv == NULL)
+		{
+			continue;
+		}
 		if (_getfunc(argv[0]))
 		{
 			exec_builtin(argv);
@@ -43,9 +47,8 @@ int main(int ac, char **av)
 		}
 		else
 		{
-			perror("command not found --------");
+			fprintf(stderr, "%s: No such file or directory\n", av[0]);
 		}
-
 	}
 	return (0);
 }
