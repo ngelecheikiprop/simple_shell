@@ -6,7 +6,7 @@
  *
  * Return: nothing
 */
-int exec_external(char **argv)
+void exec_external(char **argv)
 {
 	pid_t child;
 	int status;
@@ -26,6 +26,5 @@ int exec_external(char **argv)
 	    free(argv);
 	  }
 	}
-	return (0);
 }
 
