@@ -11,7 +11,7 @@
 /*function protypes*/
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
-int exec_external(char **argv);
+void exec_external(char **argv);
 
 void exec_builtin(char **argv);
 ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
@@ -49,6 +49,7 @@ int hsh_env();
 int hsh_setenv(char **args);
 
 int builtin_comp(char **args);
+int (*_getfunc(char *command))(char **args);
 
 env_list *create_list(char **env);
 void free_list(env_list *head);
