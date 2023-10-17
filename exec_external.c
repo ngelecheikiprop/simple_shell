@@ -11,18 +11,21 @@ int exec_external(char **argv)
 	pid_t child;
 	int status;
 	char **envp = environ;
-	/*char *file_stat = file_exists(argv);*/
+	char *file_stat = file_exists(argv);
 
+	if (file_stat != NULL)
+	{
 	  child = fork();
 	  if (child == 0)
 	  {
-	    execve(argv[0], argv, envp);
+	    execve(file_stat, argv, envp);
 	  }
 	  else
 	  {
 	    waitpid(child, &status, 0);
 	    free(argv);
 	  }
+	}
 	return (0);
 }
 
