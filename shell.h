@@ -51,5 +51,6 @@ int hsh_setenv(char **args);
 int builtin_comp(char **args);
 
 env_list *create_list(char **env);
-env_list *add_node(env_list **head, char *str);
+void free_list(env_list *head);
+env_list *add_node_end(env_list **head, char *str);
 #endif
