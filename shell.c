@@ -26,7 +26,7 @@ int main(int ac, char **av)
 		write(STDOUT_FILENO, prompt, 1);
 		fflush(stdout);
 		}
-		if (read_from_stream(&buffer, &count, stdin) == EOF)
+		if (getline(&buffer, &count, stdin) == EOF)
 		{
 			free(buffer);
 			exit(100);
@@ -49,6 +49,7 @@ int main(int ac, char **av)
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
 		}
+		free(argv);
 	}
 	return (0);
 }

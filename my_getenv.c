@@ -40,11 +40,13 @@ char *my_getenv(const char *desiredkey) {
     if (value != NULL)
     {
         copy = malloc(strlen(value) + 1);
-        strcpy(copy, value);
+        if (copy != NULL)
+        {
+            strcpy(copy, value);
+        }
         free(value);
-        return (copy);
     }
-    return (NULL);
+    return (copy);
 }
 
 
