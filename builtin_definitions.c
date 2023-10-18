@@ -46,6 +46,17 @@ int hsh_cd(char **args)
   return (0);
 }
 
+int hsh_env() {
+    char **env = environ;
+
+    while (*env != NULL) {
+        printf("%s\n", *env);
+        env++;
+    }
+
+    return 0;
+}
+
 /*int hsh_setenv(char **args)
 {
   int i = 0;

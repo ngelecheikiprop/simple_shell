@@ -4,6 +4,7 @@ BuiltinCommand commands[] =
 {
     {"cd", &hsh_cd},
     {"exit", &hsh_exit},
+    {"env", &hsh_env},
 };
 
 const int builtin_size = sizeof(commands) / sizeof(BuiltinCommand);

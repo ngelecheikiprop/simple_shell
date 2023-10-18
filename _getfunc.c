@@ -11,6 +11,7 @@ int (*_getfunc(char *command))(char **args)
 	BuiltinCommand commands[] = {
 		{"cd", hsh_cd},
 		{"exit", hsh_exit},
+		{"env", hsh_env},
 		{NULL, NULL}
 		};
 	while (commands[i].name)

@@ -67,6 +67,8 @@ int main(int ac, char **av)
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
+			exit(127);
+			free(argv);
 		}
 		free(argv);
 	}
