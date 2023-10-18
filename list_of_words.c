@@ -14,7 +14,7 @@ char *token;
 int i = 0;
 
 size_of_array = count_words(str, delim);
-argv = malloc((sizeof(char *) * size_of_array) + 1); 
+argv = malloc((sizeof(char *) * size_of_array) +1);
 token = strtok(str, delim);
 while (token != NULL)
 {

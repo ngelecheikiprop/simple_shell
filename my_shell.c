@@ -11,7 +11,7 @@ int main(int ac, char **av, char **env)
 {
 size_t count;
 char *buffer = NULL;
-char **argv; 
+char **argv;
 char *delim = " ";
 char *prompt = "$";
 
@@ -28,8 +28,8 @@ fflush(stdout);
 }
 if (getline(&buffer, &count, stdin) == EOF)
 {
-        free(buffer);
-        exit(100);
+free(buffer);
+exit(100);
 }
 strtok(buffer, "\n");
 argv = list_of_words(buffer, delim);
