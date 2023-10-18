@@ -33,7 +33,7 @@ exit(100);
 }
 strtok(buffer, "\n");
 argv = list_of_words(buffer, delim);
-exec(argv, env);
+exec(argv, env, av);
 free(buffer);
 }
 return (0);
