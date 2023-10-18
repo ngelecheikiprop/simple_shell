@@ -8,21 +8,23 @@
 */
 char **list_of_words(char *str, char *delim)
 {
-size_t size_of_array;
-char **argv;
-char *token;
-int i = 0;
+	size_t size_of_array;
+	char **argv;
+	char *token;
+	int i = 0;
 
-size_of_array = count_words(str, delim);
-argv = malloc((sizeof(char *) * size_of_array) +1);
-token = strtok(str, delim);
-while (token != NULL)
-{
-argv[i] = token;
-token = strtok(NULL, delim);
-i++;
-}
-argv[i] = NULL;
-free(token);
-return (argv);
+	size_of_array = count_words(str, delim);
+	if (size_of_array == 0)
+		return (NULL);
+	argv = malloc((sizeof(char *) * size_of_array) +1);
+	token = strtok(str, delim);
+	while (token != NULL)
+	{
+		argv[i] = token;
+		token = strtok(NULL, delim);
+		i++;
+	}
+	argv[i] = NULL;
+	free(token);
+	return (argv);
 }
