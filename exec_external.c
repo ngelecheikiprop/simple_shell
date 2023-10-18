@@ -23,8 +23,8 @@ void exec_external(char **argv)
 	  else
 	  {
 	    waitpid(child, &status, 0);
-			free(file_stat);
 	  }
 	}
+	free(file_stat);
 }
 
