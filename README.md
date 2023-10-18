@@ -27,7 +27,7 @@
 | ---- | ---- |
 
 Recommended Task Order
-. Task 1 - 0 . 1
+. Task 1 - 0 . 1 
 . Task 6 - 0 . 1 . 1
 . Task 2 - 0 . 2
 . Task 7 - 0 . 2 . 1
