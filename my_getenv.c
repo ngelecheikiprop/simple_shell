@@ -25,9 +25,11 @@ char *my_getenv(const char *desiredkey) {
     char **env = environ;
     size_t desiredKeyLength = strlen(desiredkey);
     char *value = NULL;
+    char *copy;
 
     while (*env != NULL) {
-        if (strncmp(*env, desiredkey, desiredKeyLength) == 0 && (*env)[desiredKeyLength] == '=') {
+        if (strncmp(*env, desiredkey, desiredKeyLength) == 0 && (*env)[desiredKeyLength] == '=')
+        {
             value = malloc(strlen(*env + desiredKeyLength + 1) + 1);
             strcpy(value, *env + desiredKeyLength + 1);
             break;
@@ -37,11 +39,11 @@ char *my_getenv(const char *desiredkey) {
 
     if (value != NULL)
     {
-        char *copy = malloc(strlen(value) + 1);
+        copy = malloc(strlen(value) + 1);
         strcpy(copy, value);
-        return copy;
+        free(value);
+        return (copy);
     }
-
     return (NULL);
 }
 

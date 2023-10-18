@@ -35,22 +35,23 @@ int c;
 
 allocate_buffer(linepointer, bufsize);
 
+
 while (1)
 {
 c = fgetc(stream);
 
 if (c == EOF || c == '\n')
 {
-(*linepointer)[position] = '\0';
+  (*linepointer)[position] = '\0';
 
-if (position == 0 && c == EOF)
-{
-return (-1);
-}
-else
-{
-return (position);
-}
+  if (position == 0 && c == EOF)
+  {
+  return (-1);
+  }
+  else
+  {
+  return (position);
+  }
 }
 
 (*linepointer)[position] = (char)c;
@@ -58,14 +59,15 @@ position++;
 
 if (position >= *bufsize)
 {
-*bufsize = position * 2;
-*linepointer = (char *)realloc(*linepointer, *bufsize);
+  *bufsize = position * 2;
+  *linepointer = (char *)realloc(*linepointer, *bufsize);
 
-if (*linepointer == NULL)
-{
-perror("Memory allocation failed");
-exit(EXIT_FAILURE);
+  if (*linepointer == NULL)
+  {
+  perror("Memory allocation failed");
+  exit(EXIT_FAILURE);
+  }
 }
-}
+
 }
 }

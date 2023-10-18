@@ -11,6 +11,7 @@
 /*function protypes*/
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
+void free_words(char **argv);
 void exec_external(char **argv);
 
 void exec_builtin(char **argv);
@@ -46,7 +47,7 @@ typedef struct env_list
 int hsh_exit(char **args);
 int hsh_cd(char **args);
 int hsh_env();
-int hsh_setenv(char **args);
+/*int hsh_setenv(char **args);*/
 
 int builtin_comp(char **args);
 int (*_getfunc(char *command))(char **args);
