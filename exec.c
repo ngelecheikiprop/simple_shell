@@ -3,6 +3,7 @@
  * exec - execute a command
  * @argv: the array of commands
  * @env: the environment
+ * @av: the argument vector
  *
  * Return: nothing
 */
@@ -16,6 +17,7 @@ if (child == 0)
 	if (execve(argv[0], argv, env) == -1)
 	{
 		perror(av[0]);
+		exit(EXIT_FAILURE);
 	}
 }
 else
