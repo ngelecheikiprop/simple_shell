@@ -4,14 +4,8 @@ char *file_exists(char **args)
     char *env_var_name = "PATH";
     char *path = my_getenv(env_var_name);
     char *path_copy = strdup(path);
-    char *token;
-    char *full_path = (char *)malloc(1024);
-
-    if (full_path == NULL)
-    {
-      return (NULL);
-    }
-
+    char *token, *full_path;
+    size_t path_size;
     if (path == NULL)
     {
         perror("PATH environment variable not found");
@@ -24,15 +18,22 @@ char *file_exists(char **args)
     }
 
     token = strtok(path_copy, ":");
+    path_size = strlen(token) + strlen(args[0]) + 2;
+    full_path = (char *)malloc(path_size);
+    if (full_path == NULL)
+    {
+        return (NULL);
+    }
     while (token != NULL)
     {
-        snprintf(full_path, 1024, "%s/%s", token, args[0]);
+        snprintf(full_path, path_size, "%s/%s", token, args[0]);
         if (access(full_path, F_OK) == 0)
         {
             return (full_path);
         }
         token = strtok(NULL, ":");
     }
+    free(path_copy);
     free(full_path);
     return (NULL);
 }

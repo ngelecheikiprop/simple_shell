@@ -11,6 +11,7 @@
 /*function protypes*/
 size_t count_words(char *str, char *delim);
 char **list_of_words(char *str, char *delim);
+void free_words(char **argv);
 void exec_external(char **argv);
 
 void exec_builtin(char **argv);

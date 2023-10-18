@@ -19,10 +19,9 @@ size_t count_words(char *str, char *delim)
 	while (token != NULL)
 	{
 		token = strtok(NULL, delim);
-		++count;
+		count++;
 	}
 	free(local_copy);
-	free(token);
 	return (count);
 }
 
@@ -45,7 +44,7 @@ char **list_of_words(char *str, char *delim)
 	{
 		return (NULL);
 	}
-	argv = malloc((sizeof(char *) * size_of_array) + 1);
+	argv = malloc(sizeof(char *) * (size_of_array + 1));
 	token = strtok(str, delim);
 	while (token != NULL)
 	{
@@ -54,6 +53,21 @@ char **list_of_words(char *str, char *delim)
 		i++;
 	}
 	argv[i] = NULL;
-	free(token);
 	return (argv);
+}
+
+void free_words(char **argv)
+{
+	int i = 0;
+    if (argv == NULL)
+		{
+      return;
+    }
+    
+    for (i = 0; argv[i] != NULL; i++)
+		{
+      free(argv[i]);
+    }
+    
+    free(argv);
 }
