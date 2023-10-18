@@ -1,3 +1,5 @@
 .vscode
 hsh
 /TEST_SUITE
+allowed_functions
+runchecker.bash
