@@ -46,8 +46,9 @@ int hsh_cd(char **args)
   return (0);
 }
 
-int hsh_env() {
-    char **env = environ;
+int hsh_env(char **env) 
+{
+    env = environ;
 
     while (*env != NULL) {
         printf("%s\n", *env);
