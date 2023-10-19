@@ -75,8 +75,7 @@ int main(int ac, char **av)
 			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
 			return (1);
 		}
-		free_words(argv);
+		free(argv);
 	}
-	free(buffer);
 	return (0);
 }
