@@ -11,8 +11,20 @@ int hsh_exit(char **args)
   if (args[1] != NULL)
   {
     status_code = atoi(args[1]);
+    if (status_code >= 0)
+    {
+      exit(status_code);
+    }
+    else
+    {
+      fprintf(stderr, "Illegal number: %s\n",args[1]);
+    }
   }
-  exit(status_code);
+  else
+  {
+    exit(0);
+  }
+  return (0);
 }
 
 /**
@@ -50,12 +62,13 @@ int hsh_env(char **env)
 {
     env = environ;
 
-    while (*env != NULL) {
-        printf("%s\n", *env);
-        env++;
+    while (*env != NULL)
+    {
+      printf("%s\n", *env);
+      env++;
     }
 
-    return 0;
+    return (0);
 }
 
 /*int hsh_setenv(char **args)
