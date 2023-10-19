@@ -2,7 +2,7 @@
 char *file_exists(char **args)
 {
     char *env_var_name = "PATH";
-    char *path = my_getenv(env_var_name);
+    char *path = getenv(env_var_name);
     char *path_copy = strdup(path);
     char *token, *full_path;
     size_t path_size;
