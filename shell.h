@@ -25,7 +25,7 @@ extern char **environ;
 
 char *my_getenv(const char *desiredkey);
 
-char *env(void);
+char *env();
 
 char *file_exists(char **args);
 
@@ -48,7 +48,7 @@ typedef struct env_list
 
 int hsh_exit(char **args);
 int hsh_cd(char **args);
-int hsh_env();
+int hsh_env(char **args);
 /*int hsh_setenv(char **args);*/
 
 int builtin_comp(char **args);

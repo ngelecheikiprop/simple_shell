@@ -35,36 +35,51 @@ int hsh_exit(char **args)
 int hsh_cd(char **args)
 {
   char *dir, *key = "HOME";
-  char cwd[1024];
+  char *cwd = malloc(_PC_PATH_MAX);
+  if (cwd == NULL)
+  {
+    return (1);
+  }
   if (args[1] == NULL || (strcmp(args[1], "~") == 0))
   {
-    dir = my_getenv(key);
-    chdir(dir);
+    dir = getenv(key);
+    if (chdir(dir) != 0)
+    {
+      free(cwd);
+      return (1);
+    }
   }
   else 
   {
     dir = args[1];
-    chdir(dir);
+    if (chdir(dir) != 0)
+    {
+      free(cwd);
+      return (1);
+    }
   }
   if (getcwd(cwd, sizeof(cwd)) == NULL)
   {
-    perror("getcwd");
+    free(cwd);
     return (1);
   }
   if (setenv("PWD", cwd, 1) == -1)
   {
-    perror("setenv");
+    free(cwd);
+    return (1);
   }
+  free(cwd);
   return (0);
 }
 
-int hsh_env(char **env) 
+int hsh_env(char **args) 
 {
-    env = environ;
+    char **env = environ;
+    (void)args;
 
     while (*env != NULL)
     {
-      printf("%s\n", *env);
+      puts(*env);
       env++;
     }
 

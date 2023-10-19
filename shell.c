@@ -73,10 +73,10 @@ int main(int ac, char **av)
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
-			free(argv);
-			return (2);
+			return (1);
 		}
-		free(argv);
+		free_words(argv);
 	}
+	free(buffer);
 	return (0);
 }
