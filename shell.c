@@ -1,22 +1,28 @@
 #include "shell.h"
-/*void trim_whitespace(char *str) {
+void trim_whitespace(char *str)
+{
     int start = 0;
+		int i = 0;
     int end = strlen(str) - 1;
-    while (isspace(str[start])) {
+    while (isspace(str[start])) 
+		{
         start++;
     }
-    if (start > end) {
+    if (start > end) 
+		{
         str[0] = '\0';
         return;
     }
-    while (end > start && isspace(str[end])) {
+    while (end > start && isspace(str[end])) 
+		{
         end--;
     }
-    for (int i = start; i <= end; i++) {
+    for (i = start; i <= end; i++) 
+		{
         str[i - start] = str[i];
     }
     str[end - start + 1] = '\0';
-}*/
+}
 
 /**
  * main -this is the entry point
@@ -50,7 +56,7 @@ int main(int ac, char **av)
 			free(buffer);
 			return (0);
 		}
-		strtok(buffer, "\n");
+		trim_whitespace(buffer);
 		argv = list_of_words(buffer, delim);
 		if (argv == NULL)
 		{

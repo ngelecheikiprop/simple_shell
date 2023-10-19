@@ -21,6 +21,7 @@ ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream);
 extern char **environ;
 
 #define STDIN_BUFFSIZE 1024;
+#define DELIMITERS " \t"
 
 char *my_getenv(const char *desiredkey);
 
@@ -56,4 +57,7 @@ int (*_getfunc(char *command))(char **args);
 env_list *create_list(char **env);
 void free_list(env_list *head);
 env_list *add_node_end(env_list **head, char *str);
+
+void trim_whitespace(char *str);
+char **substring_creation(char *str);
 #endif
