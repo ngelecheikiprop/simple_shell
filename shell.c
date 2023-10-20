@@ -65,6 +65,7 @@ int main(int ac, char **av)
 		}
 		if (_getfunc(argv[0]))
 		{
+			free(buffer);
 			exec_builtin(argv);
 		}
 		else if (file_exists(argv))

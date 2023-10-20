@@ -22,6 +22,7 @@ int hsh_exit(char **args)
   }
   else
   {
+    free(args);
     exit(0);
   }
   return (0);
