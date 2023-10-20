@@ -58,16 +58,16 @@ char **list_of_words(char *str, char *delim)
 
 void free_words(char **argv)
 {
-	int i = 0;
-    if (argv == NULL)
-		{
-      return;
-    }
+	size_t i = 0;
+	if (argv == NULL)
+	{
+		return;
+	}
+	
+	for (i = 0; argv[i] != NULL; i++)
+	{
+		free(argv[i]);
+	}
     
-    for (i = 0; argv[i] != NULL; i++)
-		{
-      free(argv[i]);
-    }
-    
-    free(argv);
+  free(argv);
 }

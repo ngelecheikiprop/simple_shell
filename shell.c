@@ -60,6 +60,7 @@ int main(int ac, char **av)
 		argv = list_of_words(buffer, delim);
 		if (argv == NULL)
 		{
+			free(buffer);
 			continue;
 		}
 		if (_getfunc(argv[0]))

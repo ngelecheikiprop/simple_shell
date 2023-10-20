@@ -30,44 +30,47 @@ exit(EXIT_FAILURE);
  */
 ssize_t read_from_stream(char **linepointer, size_t *bufsize, FILE *stream)
 {
-size_t position = 0;
-int c;
+  size_t position = 0;
+  char *new_buffer;
+  int c;
 
-allocate_buffer(linepointer, bufsize);
+  allocate_buffer(linepointer, bufsize);
 
 
-while (1)
-{
-c = fgetc(stream);
-
-if (c == EOF || c == '\n')
-{
-  (*linepointer)[position] = '\0';
-
-  if (position == 0 && c == EOF)
+  while (1)
   {
-  return (-1);
+    c = fgetc(stream);
+
+    if (c == EOF || c == '\n')
+    {
+    (*linepointer)[position] = '\0';
+
+    if (position == 0 && c == EOF)
+    {
+    return (-1);
+    }
+    else
+    {
+    return (position);
+    }
+    }
+
+    (*linepointer)[position] = (char)c;
+    position++;
+
+    if (position >= *bufsize)
+    {
+      *bufsize = position * 2;
+      new_buffer = (char *)realloc(*linepointer, *bufsize);
+
+      if (*linepointer == NULL)
+      {
+      perror("Memory allocation failed");
+      exit(EXIT_FAILURE);
+      }
+      *linepointer = new_buffer;
+    }
   }
-  else
-  {
-  return (position);
-  }
-}
-
-(*linepointer)[position] = (char)c;
-position++;
-
-if (position >= *bufsize)
-{
-  *bufsize = position * 2;
-  *linepointer = (char *)realloc(*linepointer, *bufsize);
-
-  if (*linepointer == NULL)
-  {
-  perror("Memory allocation failed");
-  exit(EXIT_FAILURE);
-  }
-}
-
-}
+  free(linepointer);
+  return (0);
 }
