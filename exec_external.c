@@ -5,7 +5,7 @@
  * @env: the environment
  *
  * Return: nothing
-*/
+ */
 void exec_external(char **argv)
 {
 	pid_t child;
@@ -15,16 +15,16 @@ void exec_external(char **argv)
 
 	if (file_stat != NULL)
 	{
-	  child = fork();
-	  if (child == 0)
-	  {
-	    execve(file_stat, argv, envp);
-	  }
-	  else
-	  {
-	    waitpid(child, &status, 0);
-	  }
+		child = fork();
+		if (child == 0)
+		{
+			execve(file_stat, argv, envp);
+		}
+		else
+		{
+			waitpid(child, &status, 0);
+		}
 	}
+	free(envp);
 	free(file_stat);
 }
-
