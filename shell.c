@@ -42,16 +42,20 @@ int main(int ac, char **av)
 		{
 			free(buffer);
 			exec_builtin(argv);
+			free(argv);
 		}
 		else if (file_exists(argv))
 		{
+			free(buffer);
 			exec_external(argv);
+			free(argv);
 		}
 		else
 		{
 			fprintf(stderr, "%s: 1: %s: not found\n", av[0], argv[0]);
+			free(buffer);
+			free(argv);
 		}
-		free(argv);
 	}
 	return (0);
 }
